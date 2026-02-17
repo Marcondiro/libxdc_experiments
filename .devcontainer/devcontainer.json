@@ -1,0 +1,14 @@
+{
+  "name": "libxdc_experiments Devcontainer",
+  "context": "..",
+  "dockerFile": "Dockerfile",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}
