@@ -1,0 +1,14 @@
+[package]
+name = "ptcov-bench"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92.0"
+
+[dependencies]
+ptcov = { git = "https://github.com/Marcondiro/ptcov" , default-features = false }
+memmap2 = "0.9.10"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"

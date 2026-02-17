@@ -75,29 +75,33 @@ EXPERIMENTS = [
 
 TOOLS = [
     {
+        "name": "ptcov",
+        "path": "./ptcov/target/release/ptcov-bench"
+    },
+    {
         "name": "libxdc",
         "path": "./libxdc/tester"
     },
-    {
-        "name": "libipt",
-        "path": "./libipt_ptxed/tester"
-    },
-    {
-        "name": "WinAFL",
-        "path": "./winaflpt/tester"
-    },
-    {
-        "name": "PTrix",
-        "path": "./ptrix/tester"
-    },
-    {
-        "name": "killerbeez",
-        "path": "./killerbeez/tester"
-    },
-    {
-        "name": "honggfuzz",
-        "path": "./honggfuzz/tester"
-    }
+    # {
+    #     "name": "libipt",
+    #     "path": "./libipt_ptxed/tester"
+    # },
+    # {
+    #     "name": "WinAFL",
+    #     "path": "./winaflpt/tester"
+    # },
+    # {
+    #     "name": "PTrix",
+    #     "path": "./ptrix/tester"
+    # },
+    # {
+    #     "name": "killerbeez",
+    #     "path": "./killerbeez/tester"
+    # },
+    # {
+    #     "name": "honggfuzz",
+    #     "path": "./honggfuzz/tester"
+    # }
 ]
 
 NUM_RUNS = 3

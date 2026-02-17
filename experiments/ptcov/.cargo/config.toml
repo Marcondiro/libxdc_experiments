@@ -1,0 +1,2 @@
+[build]
+rustflags = ["-Ctarget-cpu=native", "-Ctarget-feature=+crt-static", "-Cdebuginfo=2", "-Cforce-frame-pointers=yes"]
