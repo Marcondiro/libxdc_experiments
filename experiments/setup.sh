@@ -13,8 +13,8 @@ rm libxdc/tester
 rm -rf libxdc/libxdc
 rm ptrix/tester
 
-git clone https://github.com/intelxed/xed.git xed
-git clone https://github.com/intelxed/mbuild.git mbuild
+git clone --branch v2024.09.09 https://github.com/intelxed/xed.git xed
+git clone --branch v2024.09.08 https://github.com/intelxed/mbuild.git mbuild
 cd xed
 ./mfile.py --shared install
 mv kits/xed-install-base* kits/xed-install-base/
@@ -60,4 +60,9 @@ cd $ROOT
 echo "===== BUILD honeybee ====="
 cd honeybee/
 sh make.sh
+cd $ROOT
+
+echo "===== BUILD ptcov ====="
+cd ptcov/
+cargo build --release
 cd $ROOT

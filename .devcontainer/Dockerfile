@@ -3,7 +3,8 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y \
     python3-matplotlib python3-msgpack python3-numpy git python3 python curl \
-    gcc make libipt2 build-essential cmake
+    gcc make libipt2 build-essential cmake texlive-latex-base \
+    texlive-latex-extra texlive-fonts-recommended dvipng
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output /get-pip.py && \
     python2 /get-pip.py && \
     rm /get-pip.py && \
@@ -16,6 +17,8 @@ RUN git clone --depth 1 --single-branch --branch v4 \
     ./make.sh   && \
     ./make.sh install && \
     cd .. && rm -r capstone
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # git clone https://github.com/intelxed/xed.git
 

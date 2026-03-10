@@ -10,8 +10,10 @@ for res_path in glob.glob("results/*.json"):
         res.update(json.load(f))
 
 targets=["mruby", "unzip", "kafl", "foo", "kernel", "avscript32", "infiniteloop1", "qemu"]
-tools = ["libxdc", "killerbeez", "PTrix", "honggfuzz", "WinAFL",  "libipt",]
-names = ["{\\large\\textbf{\\textsc{libxdc}}}", "{\small killerbeez}", "{\small PTrix}", "{\small honggfuzz}", "{\small WinAFL}",  "{\small libipt}",]
+tools = ["libxdc", "killerbeez", "PTrix", "honggfuzz", #"WinAFL", "libipt",
+ "ptcov"]
+names = ["{\\large\\textbf{\\textsc{libxdc}}}", "{\small killerbeez}", "{\small PTrix}", "{\small honggfuzz}", #"{\small WinAFL}",  "{\small libipt}",
+ "{\small ptcov}"]
 dpi=160
 fig = plt.figure(figsize=(10, 10), dpi=dpi)
 #plt.rcParams.update({
@@ -42,7 +44,7 @@ for target_i in range(len(targets)):
         bp = plt.bar(offset+0.1+0.21*i, avg, yerr=[[mmin],[mmax]], width = 0.2, color=color, linewidth=0.5, edgecolor="black")
 
 
-ax.set_yscale("log", nonposy='clip')
+# ax.set_yscale("log", nonposy='clip')
 
 tick_lables = []
 tick_pos = []
@@ -64,7 +66,7 @@ axR.set_xticklabels(target_labels)
 axR.set_xlim(ax.get_xlim())
 axR.set_xlabel('Target', fontsize=18)
 
-ticks = [1.0,1.2,1.4,1.6,1.8,2,3,4,5,6,7,8,9,10,20,30,40]
+ticks = [1.0,1.2,1.4,1.6,1.8,2,3]#,4,5,6,7,8,9,10,20,30,40]
 ax.set_yticklabels([str(t)+"x" for t in ticks])
 ax.set_yticks(ticks)
 

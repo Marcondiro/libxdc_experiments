@@ -5,8 +5,11 @@ edition = "2024"
 rust-version = "1.92.0"
 
 [dependencies]
-ptcov = { git = "https://github.com/Marcondiro/ptcov" , default-features = false }
+ptcov = { version = "0.1.0-beta.1", default-features = false }
 memmap2 = "0.9.10"
+
+[features]
+export_coverage = []
 
 [profile.release]
 lto = true

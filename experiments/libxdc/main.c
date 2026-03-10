@@ -12,6 +12,27 @@
 #include <libxdc.h>
 #include "page_cache.h"
 
+void write_bitmap_to_file(uint8_t* bitmap_ptr, uint32_t bitmap_size) {
+    if (!bitmap_ptr ) {
+        fprintf(stderr, "[%s] Invalid arguments\n", __func__);
+        return;
+    }
+    
+    FILE* fp = fopen("libxdc_bitmap.bin", "wb");
+    if (fp == NULL) {
+        fprintf(stderr, "[%s] Could not open file %s\n", __func__, "libxdc_bitmap.bin");
+        return;
+    }
+        
+    size_t written = fwrite(bitmap_ptr, 1, bitmap_size, fp);
+    if (written != bitmap_size) {
+        fprintf(stderr, "[%s] Failed to write bitmap: expected %u bytes, wrote %zu bytes\n", 
+                __func__, bitmap_size, written);
+    }
+    
+    fclose(fp);
+}
+
 uint8_t* mapfile_read(char *fn, uint64_t *size){
 	int fd = open(fn, O_RDONLY);
 	if (fd < 0)
@@ -42,6 +63,8 @@ int simple_test(uint64_t filter[4][2], uint8_t* trace, uint64_t trace_size, cons
 	void* bitmap = malloc(0x10000);
   	libxdc_t* decoder = libxdc_init(filter, &page_cache_fetch, page_cache, bitmap, 0x10000);
 	ret = libxdc_decode(decoder, trace, trace_size);
+
+	// write_bitmap_to_file(bitmap, 0x10000);
 
 	page_cache_destroy(page_cache);
 	libxdc_free(decoder);
@@ -147,5 +170,3 @@ int main(int argc, char** argv){
 
   return ret_val;
 }
-
-

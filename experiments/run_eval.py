@@ -75,10 +75,6 @@ EXPERIMENTS = [
 
 TOOLS = [
     {
-        "name": "ptcov",
-        "path": "./ptcov/target/release/ptcov-bench"
-    },
-    {
         "name": "libxdc",
         "path": "./libxdc/tester"
     },
@@ -90,21 +86,25 @@ TOOLS = [
     #     "name": "WinAFL",
     #     "path": "./winaflpt/tester"
     # },
-    # {
-    #     "name": "PTrix",
-    #     "path": "./ptrix/tester"
-    # },
-    # {
-    #     "name": "killerbeez",
-    #     "path": "./killerbeez/tester"
-    # },
-    # {
-    #     "name": "honggfuzz",
-    #     "path": "./honggfuzz/tester"
-    # }
+    {
+        "name": "PTrix",
+        "path": "./ptrix/tester"
+    },
+    {
+        "name": "killerbeez",
+        "path": "./killerbeez/tester"
+    },
+    {
+        "name": "honggfuzz",
+        "path": "./honggfuzz/tester"
+    },
+    {
+        "name": "ptcov",
+        "path": "./ptcov/target/release/ptcov-bench"
+    },
 ]
 
-NUM_RUNS = 3
+NUM_RUNS = 100
 
 
 for exp in EXPERIMENTS:
@@ -112,6 +112,7 @@ for exp in EXPERIMENTS:
     res[exp["name"]] = {}
     tt = res[exp["name"]]
     for tool in TOOLS:
+        print("decoding %s with %s"%(exp["name"], tool["name"]))
         tt[tool["name"]] = []
         tt_res = tt[tool["name"]]
         for run in range(NUM_RUNS):
